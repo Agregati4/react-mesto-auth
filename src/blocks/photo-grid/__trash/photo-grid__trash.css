@@ -1,0 +1,17 @@
+.photo-grid__trash {
+  background-image: url(../../../images/photo-grid__trash.svg);
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-size: 18px 19px;
+  width: 18px;
+  height: 19px;
+  transition: opacity .2s linear;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.photo-grid__trash:hover {
+  opacity: 0.6;
+}

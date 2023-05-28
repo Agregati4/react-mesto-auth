@@ -1,0 +1,11 @@
+.content {
+  width: 68.75%;
+}
+
+@media all and (max-width: 768px) {
+  .content {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+  }
+}

@@ -1,0 +1,27 @@
+.profile__image-link {
+  max-width: 120px;
+  max-height: 120px;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+}
+
+.profile__image-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.8);
+  opacity: 0;
+  transition: opacity .2s linear;
+}
+
+.profile__image-link:hover:after {
+  opacity: 1;
+  background-image: url(../../../images/profile__edit-button-pen.svg);
+  background-repeat: no-repeat;
+  background-size: 26px 26px;
+  background-position: center;
+}

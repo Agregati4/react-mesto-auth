@@ -1,0 +1,15 @@
+.profile__info {
+  color: white;
+  display: grid;
+  grid-template-columns: 87.5% 1fr;
+  margin: 22px 0 20px 30px;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+  .profile__info {
+    width: 100%;
+    margin: 26px 0 33px;
+    grid-template-columns: 86.9% 1fr;
+  }
+}

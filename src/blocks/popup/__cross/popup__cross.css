@@ -1,0 +1,30 @@
+.popup__cross {
+  background-image: url(../../../images/popup__cross.svg);
+  min-width: 32px;
+  min-height: 32px;
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  bottom: 8px;
+  left: 239px;
+  transition: opacity .1s linear;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.popup__cross:hover {
+  opacity: 0.6;
+}
+
+@media all and (max-width: 520px) {
+  .popup__cross {
+    min-width: 20px;
+    min-height: 20px;
+    background-size: 20px 20px;
+    bottom: 16px;
+    left: 131px;
+  }
+}

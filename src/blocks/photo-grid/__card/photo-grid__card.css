@@ -1,0 +1,22 @@
+.photo-grid__card {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 282px;
+  max-height: 361px;
+  height: 100%;
+  position: relative;
+}
+
+@media all and (max-width: 1150px) {
+  .photo-grid__card {
+    max-width: none;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .photo-grid__card {
+    max-width: 282px;
+  }
+}

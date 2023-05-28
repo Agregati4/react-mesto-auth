@@ -1,0 +1,17 @@
+.photo-grid__heart {
+  background-image: url(../../../images/photo-grid__heart.svg);
+  min-width: 22px;
+  min-height: 19px;
+  background-size: 22px 19px;
+  background-repeat: no-repeat;
+  margin: -3px 0 0;
+  transition: opacity .2s linear;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.photo-grid__heart:hover {
+  opacity: 0.5;
+}
