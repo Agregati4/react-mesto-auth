@@ -1,0 +1,13 @@
+.popup__button_type_register {
+  color: black;
+  background-color: white;
+  margin: 216px 0 0;
+}
+
+@media all and (max-width: 520px) {
+  .popup__button_type_register {
+    min-width: 260px;
+    min-height: 46px;
+    margin: 173px 0 0;
+  }
+}

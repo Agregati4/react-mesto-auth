@@ -1,15 +1,12 @@
 import * as React from 'react';
-import error from '../images/error.svg';
-import Header from './Header.js';
-import { useNavigate } from 'react-router-dom';
+import { authorization } from './Auth.js';
 
 function Login(props) {
-  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const navigate = useNavigate();
 
-  function handleNameChange(e) {
-    setName(e.target.value);
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
   };
 
   function handlePasswordChange(e) {
@@ -18,37 +15,39 @@ function Login(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-  };
 
-  function handleButtonClick() {
-    navigate('/sign-up');
+    authorization(email, password)
+    .then(data => props.success(data, email))
+    .catch(() => {
+      props.error();
+
+      setEmail('');
+      setPassword('');
+    })
   };
 
   return (
     <>
-      <Header loggedIn={ props.loggedIn } buttonText="Регистрация" onButtonClick={ handleButtonClick }/>
-      <div className="login">
-        <h2 className="login__title">Вход</h2>
-        <form className="login__form" onSubmit={ handleSubmit }>
-          <input
-            placeholder="Email"
-            className="login__input"
-            type="email"
-            onChange={ handleNameChange }
-            value={ name }
-            required
-          />
-          <input
-            placeholder="Пароль"
-            className="login__input"
-            type="password"
-            onChange={ handlePasswordChange }
-            value={ password }
-            required
-          />
-          <button className="login__button">Войти</button>
-        </form>
-      </div>
+      <h2 className="popup__title popup__title_login">Вход</h2>
+      <form className="popup__form" onSubmit={ handleSubmit }>
+        <input
+          placeholder="Email"
+          className="popup__input popup__input_login"
+          type="email"
+          onChange={ handleEmailChange }
+          value={ email }
+          required
+        />
+        <input
+          placeholder="Пароль"
+          className="popup__input popup__input_login"
+          type="password"
+          onChange={ handlePasswordChange }
+          value={ password }
+          required
+        />
+        <button className="popup__button popup__button_type_login">Войти</button>
+      </form>
     </>
   )
 }

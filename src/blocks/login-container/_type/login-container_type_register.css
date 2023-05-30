@@ -1,0 +1,9 @@
+.login-container_type_register {
+  margin: 60px 0 80px;
+}
+
+@media all and (max-width: 520px) {
+  .login-container_type_register {
+    margin: 40px 0 40px;
+  }
+}
