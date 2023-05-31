@@ -14,7 +14,7 @@ import Register from './Register.js';
 import ProtectedRoute from './ProtectedRoute.js';
 import InfoTooltip from './InfoTooltip.js';
 import Header from './Header.js';
-import { validation } from './Auth.js';
+import * as Auth from './Auth.js';
 
 function App() {
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ function App() {
     if(localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
 
-      validation(jwt)
+      Auth.validation(jwt)
       .then(userData => {
         setHeaderEmail(userData.data.email);
         setLoggedIn(true);
@@ -242,14 +242,6 @@ function App() {
     navigate('/sign-in');
   };
 
-  function handleTransitionToRegister() {
-    navigate('/sign-up');
-  };
-
-  function handleTransitionToLogin() {
-    navigate('/sign-in');
-  };
-
   function onHeaderButtonClick() {
     navigate(headerButtonNav);
 
@@ -259,6 +251,18 @@ function App() {
       setHeaderButtonText('Регистрация');
     };
   };
+
+  function authorization(email, password) {
+    Auth.authorization(email, password)
+    .then(data => onAuthorization(data, email))
+    .catch(() => handleErrorTooltipOpen())
+  };
+
+  function register(email, password) {
+    Auth.register(email, password)
+    .then(() => onRegister())
+    .catch(() => handleErrorTooltipOpen())
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -274,11 +278,11 @@ function App() {
           <Routes>
             <Route path="/sign-in" element={
               <div className="login-container">
-                <Login onHeaderButtonClick={ handleTransitionToRegister } success={ onAuthorization } error={ handleErrorTooltipOpen } />
+                <Login authorization={ authorization } />
               </div> } />
             <Route path="/sign-up" element={
               <div className="login-container login-container_type_register">
-                <Register onHeaderButtonClick={ handleTransitionToLogin } success={ onRegister } error={ handleErrorTooltipOpen } />
+                <Register onCaptionButtonClick={ onHeaderButtonClick } register={ register } />
               </div> } />
             <Route path="/" element={ <ProtectedRoute loggedIn={ loggedIn } element={
             <Main
